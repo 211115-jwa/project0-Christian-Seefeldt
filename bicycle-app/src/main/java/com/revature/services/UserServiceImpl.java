@@ -47,20 +47,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByBrand(String brand) {
-		Set<Bike> bike = new HashSet <Bike>();
-		allBikes = bikedao.getAll();
-		for(int i = 0;i < allBikes.size();i++) {
-			Iterator value = bike.iterator();
-			while (value.hasNext()) {
-				if( allBikes.get(i).getBrand().equals(brand)) {
-					b.add(allBikes.get(i));
-			}
-			
-			
-				
-			}
-		}
-		return b;
+		return null;
+//		Set<Bike> bike = new HashSet <Bike>();
+//		allBikes = bikedao.getAll();
+//		for(int i = 0;i < allBikes.size();i++) {
+//			Iterator value = bike.iterator();
+//			while (value.hasNext()) {
+//				if( allBikes.get(i).getBrand().equals(brand)) {
+//					b.add(allBikes.get(i));
+//			}
+//			
+//			
+//				
+//			}
+//		}
+//		return b;
 	}
 
 }
