@@ -26,7 +26,6 @@ public class Bike {
 		weightLimit = 200;
 		price = 500;		
 	}
-	
 	public int getId() {
 		return id;
 	}
@@ -45,5 +44,55 @@ public class Bike {
 	public void setStyle(String style) {
 		this.style = style;
 	}
-	
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getSpeeds() {
+		return speeds;
+	}
+	public void setSpeeds(String speeds) {
+		this.speeds = speeds;
+	}
+	public String getBrakes() {
+		return brakes;
+	}
+	public void setBrakes(String brakes) {
+		this.brakes = brakes;
+	}
+	public String getWheels() {
+		return wheels;
+	}
+	public void setWheels(String wheels) {
+		this.wheels = wheels;
+	}
+	public boolean isElectric() {
+		return electric;
+	}
+	public void setElectric(boolean electric) {
+		this.electric = electric;
+	}
+	public int getFrameSize() {
+		return frameSize;
+	}
+	public void setFrameSize(int frameSize) {
+		this.frameSize = frameSize;
+	}
+	public int getWeightLimit() {
+		return weightLimit;
+	}
+	public void setWeightLimit(int weightLimit) {
+		this.weightLimit = weightLimit;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 }

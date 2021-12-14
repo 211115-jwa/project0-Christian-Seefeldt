@@ -1,5 +1,7 @@
 package com.revature.data.DAO;
 
-public interface PersonDAO {
+import com.revature.beans.Person;
 
+public interface PersonDAO extends GenericDao<Person> {
+	public Person getById(int id);
 }
