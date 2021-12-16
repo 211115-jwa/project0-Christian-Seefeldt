@@ -13,6 +13,14 @@ public interface UserService {
 	public Person buyBike(int bikeId, Person newOwner);
 	public Set<Bike> viewAvailableBikes();
 	public Set<Bike> searchAvailablebikesByBrand(String brand);
+	public Set<Bike> searchAvailablebikesByStyle(String style);
+	public Set<Bike> searchAvailablebikesByColor(String color);
+	public Set<Bike> searchAvailablebikesByBrakes(String brakes);
+	public Set<Bike> searchAvailablebikesByWheels(String wheels);
+	public Set<Bike> searchAvailablebikesByElec(Boolean electric);
+	public Set<Bike> searchAvailablebikesByFrame(float frameSize);
+	public Set<Bike> searchAvailablebikesBySpeeds(int speeds);
+	public Set<Bike> searchAvailablebikesByPrice(int price);
 }
 
 

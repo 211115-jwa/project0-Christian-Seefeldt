@@ -16,7 +16,7 @@ public class Person {
 		id = 0;
 		firstName = null;
 		lastName = null;
-		role = "customer";
+		role = "Customer";
 		bikes = new ArrayList<>();
 	}
 	

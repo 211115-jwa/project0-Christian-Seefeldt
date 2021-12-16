@@ -48,4 +48,10 @@ public class PersonPostgress implements PersonDAO {
 		return null;
 	}
 
+	@Override
+	public Person getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -5,25 +5,25 @@ public class Bike {
 	private String brand;
 	private String style;
 	private String color;
-	private String speeds;
 	private String brakes;
 	private String wheels;
 	private boolean electric;
+	private boolean avalible;
 	private int frameSize;
-	private int weightLimit;
-	private int price;
+	private int speeds;
+	private float price;
 	
 	public Bike() {
 		id = 0;
 		brand = null;
 		style = null;
 		color = null;
-		speeds = null;
 		brakes = null;
 		wheels = null;
 		electric = false;
-		frameSize = 26;
-		weightLimit = 200;
+		avalible= true;
+		speeds = 1;
+		frameSize = 25;
 		price = 500;		
 	}
 	public int getId() {
@@ -50,12 +50,6 @@ public class Bike {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public String getSpeeds() {
-		return speeds;
-	}
-	public void setSpeeds(String speeds) {
-		this.speeds = speeds;
-	}
 	public String getBrakes() {
 		return brakes;
 	}
@@ -74,22 +68,28 @@ public class Bike {
 	public void setElectric(boolean electric) {
 		this.electric = electric;
 	}
+	public boolean isAvalible() {
+		return avalible;
+	}
+	public void setAvalible(boolean avalible) {
+		this.avalible = avalible;
+	}
 	public int getFrameSize() {
 		return frameSize;
 	}
 	public void setFrameSize(int frameSize) {
 		this.frameSize = frameSize;
 	}
-	public int getWeightLimit() {
-		return weightLimit;
+	public int getSpeeds() {
+		return speeds;
 	}
-	public void setWeightLimit(int weightLimit) {
-		this.weightLimit = weightLimit;
+	public void setSpeeds(int speeds) {
+		this.speeds = speeds;
 	}
-	public int getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	public void setId(int id) {

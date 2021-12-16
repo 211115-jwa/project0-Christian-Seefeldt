@@ -8,19 +8,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private BikeDAO bikeDao = new BikePostgres();
 
 	@Override
-	public int addNewPet(Bike newBike) {
+	public int addNewBike(Bike newBike) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Bike editPet(Bike bikeToEdit) {
+	public Bike editBike(Bike bikeToEdit) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Bike getPetById(int id) {
+	public Bike getBikeById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
