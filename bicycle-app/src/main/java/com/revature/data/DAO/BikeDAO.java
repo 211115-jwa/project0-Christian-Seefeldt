@@ -6,9 +6,30 @@ import com.revature.beans.Bike;
 
 public interface BikeDAO extends GenericDao<Bike> {
 	
-	public Set<Bike> getByAvalibility(String avalibility);
+	public Bike getById(int id);
 	
-//	public Set<Bike> getByBrand(String brand);
+	public Set<Bike> getByAvalibility(boolean avalibility);
+	
+	public Set<Bike> getByBrand(String brand);
+	
+	public Set<Bike> getByStyle(String style);
+	
+	public Set<Bike> getByColor(String color);
+	
+	public Set<Bike> getByBrakes(String brakes);
+	
+	public Set<Bike> getByWheels(String wheels);
+	
+	public Set<Bike> getByElec(boolean electric);
+	
+	public Set<Bike> getByFrameSize(int frameSize);
+	
+	public Set<Bike> getBySpeeds(int speeds);
+	
+	public Set<Bike> getByPrice(int price);
+	
+	public Set<Bike> getByPriceRange(int price, int price1);
+	
 	
 
 }

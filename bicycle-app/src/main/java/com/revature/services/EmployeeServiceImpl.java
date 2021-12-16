@@ -9,19 +9,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public int addNewBike(Bike newBike) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bikeDao.create(newBike);
 	}
 
 	@Override
 	public Bike editBike(Bike bikeToEdit) {
-		// TODO Auto-generated method stub
+		Bike petFromDatabase = bikeDao.getById(bikeToEdit.getId());
+		if (petFromDatabase != null) {
+			bikeDao.update(bikeToEdit);
+			return bikeDao.getById(bikeToEdit.getId());
+		}
 		return null;
 	}
 
 	@Override
 	public Bike getBikeById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bikeDao.getById(id);
 	}
+
 }

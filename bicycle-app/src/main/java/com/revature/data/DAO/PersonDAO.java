@@ -6,7 +6,7 @@ public interface PersonDAO extends GenericDao<Person> {
 	
 	public Person getByUsername(String username);
 	
-//	public Person getById(int id);
+	public Person getById(int id);
 	
-//	public Person getByLastname(String lastName);
+	public Person getByLastname(String lastName);
 }

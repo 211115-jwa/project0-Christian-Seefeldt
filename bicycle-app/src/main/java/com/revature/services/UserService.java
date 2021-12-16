@@ -18,9 +18,9 @@ public interface UserService {
 	public Set<Bike> searchAvailablebikesByBrakes(String brakes);
 	public Set<Bike> searchAvailablebikesByWheels(String wheels);
 	public Set<Bike> searchAvailablebikesByElec(Boolean electric);
-	public Set<Bike> searchAvailablebikesByFrame(float frameSize);
+	public Set<Bike> searchAvailablebikesByFrame(int frameSize);
 	public Set<Bike> searchAvailablebikesBySpeeds(int speeds);
-	public Set<Bike> searchAvailablebikesByPrice(int price);
+	public Set<Bike> searchAvailablebikesByPrice(float price);
 }
 
 

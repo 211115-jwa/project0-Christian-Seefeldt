@@ -36,7 +36,7 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setBoolean(11, dataToAdd.isAvalible());
 			pStmt.setInt(8, dataToAdd.getFrameSize());
 			pStmt.setInt(9, dataToAdd.getSpeeds());
-			pStmt.setInt(10, dataToAdd.getPrice());
+			pStmt.setFloat(10, dataToAdd.getPrice());
 			
 			
 			pStmt.executeUpdate();
@@ -84,7 +84,67 @@ public class BikePostgres implements BikeDAO {
 	}
 
 	@Override
-	public Set<Bike> getByAvalibility(String avalibility) {
+	public Set<Bike> getByAvalibility(boolean avalibility) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByBrand(String brand) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByStyle(String style) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByColor(String color) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByBrakes(String brakes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByWheels(String wheels) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByElec(boolean electric) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByFrameSize(int frameSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getBySpeeds(int speeds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByPrice(int price) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Bike> getByPriceRange(int price, int price1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
