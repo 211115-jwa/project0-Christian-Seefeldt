@@ -3,7 +3,7 @@ package com.revature.beans;
 public class Bike {
 	private int id;
 	private String brand;
-	private String style;
+	private String model; //
 	private String color;
 	private String brakes;
 	private String wheels;
@@ -16,7 +16,7 @@ public class Bike {
 	public Bike() {
 		id = 0;
 		brand = null;
-		style = null;
+		model = null;
 		color = null;
 		brakes = null;
 		wheels = null;
@@ -38,11 +38,11 @@ public class Bike {
 	public void setBrand(String brand) {
 		this.brand = brand;	
 	}
-	public String getStyle() {
-		return style;
+	public String getModel() {
+		return model;
 	}
-	public void setStyle(String style) {
-		this.style = style;
+	public void setModel(String style) {
+		this.model = style;
 	}
 	public String getColor() {
 		return color;

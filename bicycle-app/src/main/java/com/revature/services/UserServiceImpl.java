@@ -64,15 +64,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> viewAvailableBikes() {
-		return bikeDao.getByAvalibility(true);
+		return bikeDao.getByAvalible(true);
 	}
 	
 	@Override
-	public Set<Bike> searchAvailablebikesByStyle(String style) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+	public Set<Bike> searchAvailablebikesByModel(String model) {
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
-					.filter(bike -> bike.getStyle().toLowerCase().contains(style.toLowerCase()))
+					.filter(bike -> bike.getModel().toLowerCase().contains(model.toLowerCase()))
 					.collect(Collectors.toSet());
 		
 		return availableBikes;
@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByColor(String color) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getColor().toLowerCase().contains(color.toLowerCase()))
@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByBrakes(String brakes) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getBrakes().toLowerCase().contains(brakes.toLowerCase()))
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByWheels(String wheels) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getWheels().toLowerCase().contains(wheels.toLowerCase()))
@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public Set<Bike> searchAvailablebikesByBrand(String brand) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getBrand().toLowerCase().contains(brand.toLowerCase()))
@@ -124,7 +124,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByElec(Boolean electric) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.isElectric() == electric)
@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByFrame(int frameSize) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getFrameSize() == frameSize)
@@ -146,7 +146,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesBySpeeds(int speeds) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getSpeeds() == speeds)
@@ -157,7 +157,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByPrice(float price) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getPrice() == price)
@@ -168,7 +168,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesByPriceRange(float price1, float price2) {
-		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		Set<Bike> availableBikes = bikeDao.getByAvalible(true);
 		
 		availableBikes = availableBikes.stream()
 					.filter(bike -> bike.getPrice() <= price1)

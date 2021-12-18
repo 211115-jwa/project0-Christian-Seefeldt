@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Person {
 	private int id;
-	private String username;
-	private String password;
+	private String usr; //
+	private String psw; //
 	private String firstName;
 	private String lastName;
-	private String role;
+	private String userRole; //
 	private List<Bike> bikes;
 	
 	public Person() {
 		id = 0;
 		firstName = null;
 		lastName = null;
-		role = "Customer";
+		userRole = "Customer";
 		bikes = new ArrayList<>();
 	}
 	
@@ -27,16 +27,16 @@ public class Person {
 		this.id = id;
 	}
 	public String getUsername() {
-		return username;
+		return usr;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String usr) {
+		this.usr = usr;
 	}
 	public String getPassword() {
-		return password;
+		return psw;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String psw) {
+		this.psw = psw;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -51,10 +51,10 @@ public class Person {
 		this.lastName = lastName;
 	}
 	public String getRole() {
-		return role;
+		return userRole;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole(String userRole) {
+		this.userRole = userRole;
 	}
 	public List<Bike> getBikes() {
 		return bikes;
