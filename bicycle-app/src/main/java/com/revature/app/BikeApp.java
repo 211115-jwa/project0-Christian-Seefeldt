@@ -30,11 +30,17 @@ public class BikeApp {
 				get(ctx -> {
 				
 					String brandsSearch = ctx.queryParam("brand");
+					String StylesSearch = ctx.queryParam("style");
+					String ColorsSearch = ctx.queryParam("color");
+					String BrakessSearch = ctx.queryParam("brakes");
+					String WheelsSearch = ctx.queryParam("wheels");
+					Boolean ElecSearch = ctx.queryParam("electric");
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);
 					ctx.json(bikesFound);
-				} else {
+				}
+				else {
 					Set<Bike> availablePets = userServ.viewAvailableBikes();
 					ctx.json(availablePets);
 				}

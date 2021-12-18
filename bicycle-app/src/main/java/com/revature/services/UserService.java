@@ -21,6 +21,7 @@ public interface UserService {
 	public Set<Bike> searchAvailablebikesByFrame(int frameSize);
 	public Set<Bike> searchAvailablebikesBySpeeds(int speeds);
 	public Set<Bike> searchAvailablebikesByPrice(float price);
+	public Set<Bike> searchAvailablebikesByPriceRange(float price1, float price2);
 }
 
 

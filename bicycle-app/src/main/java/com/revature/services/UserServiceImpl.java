@@ -110,14 +110,25 @@ public class UserServiceImpl implements UserService {
 		
 		return availableBikes;
 	}
+	
+	@Override
+	public Set<Bike> searchAvailablebikesByBrand(String brand) {
+		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		
+		availableBikes = availableBikes.stream()
+					.filter(bike -> bike.getBrand().toLowerCase().contains(brand.toLowerCase()))
+					.collect(Collectors.toSet());
+		
+		return availableBikes;
+	}
 
 	@Override
 	public Set<Bike> searchAvailablebikesByElec(Boolean electric) {
 		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
 		
 		availableBikes = availableBikes.stream()
-					.filter(bike -> bike.isElectric().contains(electric)
-					.collect(Collectors.toSet();
+					.filter(bike -> bike.isElectric() == electric)
+					.collect(Collectors.toSet());
 		
 		return availableBikes;
 	}
@@ -127,7 +138,7 @@ public class UserServiceImpl implements UserService {
 		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
 		
 		availableBikes = availableBikes.stream()
-					.filter(bike -> bike.getFrameSize().ParseString().contains(frameSize.ParseString())
+					.filter(bike -> bike.getFrameSize() == frameSize)
 					.collect(Collectors.toSet());
 		
 		return availableBikes;
@@ -135,22 +146,33 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Set<Bike> searchAvailablebikesBySpeeds(int speeds) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		
+		availableBikes = availableBikes.stream()
+					.filter(bike -> bike.getSpeeds() == speeds)
+					.collect(Collectors.toSet());
+		
+		return availableBikes;
 	}
 
 	@Override
 	public Set<Bike> searchAvailablebikesByPrice(float price) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Set<Bike> searchAvailablebikesByBrand(String brand) {
 		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
 		
 		availableBikes = availableBikes.stream()
-					.filter(bike -> bike.getBrand().toLowerCase().contains(brand.toLowerCase()))
+					.filter(bike -> bike.getPrice() == price)
+					.collect(Collectors.toSet());
+		
+		return availableBikes;
+	}
+
+	@Override
+	public Set<Bike> searchAvailablebikesByPriceRange(float price1, float price2) {
+		Set<Bike> availableBikes = bikeDao.getByAvalibility(true);
+		
+		availableBikes = availableBikes.stream()
+					.filter(bike -> bike.getPrice() <= price1)
+					.filter(bike -> bike.getPrice() >= price2)
 					.collect(Collectors.toSet());
 		
 		return availableBikes;
