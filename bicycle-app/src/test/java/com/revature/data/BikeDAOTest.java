@@ -28,7 +28,7 @@ public class BikeDAOTest {
 	}
 	@Test
 	public void getByAvalible() {
-		Set<Bike> givenOutput = bikeDao.getByAvalible("Avalible");
+		Set<Bike> givenOutput = bikeDao.getByAvailable("Available");
 		assertNotNull(givenOutput);
 		Set<Bike> expectedBikes = new HashSet<>();
 		assertNotEquals(expectedBikes, givenOutput);

@@ -32,17 +32,17 @@ public class BikeServicesTest {
 	@InjectMocks
 	private UserService userServ = new UserServiceImpl();
 	
-	private static Set<Bike> mockAvalibleBikes;
+	private static Set<Bike> mockAvailableBikes;
 	
 	@BeforeAll
-	public static void mockAvalibleBrandsSetup() {
-		mockAvalibleBikes = new HashSet<>();
+	public static void mockAvailableBrandsSetup() {
+		mockAvailableBikes = new HashSet<>();
 		
 		for (int i=1; i<=5; i ++) {
 			Bike bike = new Bike();
 			if (i<3)
 				bike.setBrand("placeholder");
-			mockAvalibleBikes.add(bike);
+			mockAvailableBikes.add(bike);
 		}
 	}
 	
@@ -50,7 +50,7 @@ public class BikeServicesTest {
 	public void searchByBrandExists() {
 		String brand = "placeholder";
 		
-		when(bikeDao.getAll()).thenReturn(mockAvalibleBikes);
+		when(bikeDao.getAll()).thenReturn(mockAvailableBikes);
 		
 		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
 		boolean onlyBikes = true;
@@ -66,7 +66,7 @@ public class BikeServicesTest {
 	public void searchByBrandDoesNotExist() {
 		String brand = "car";
 		
-		when(bikeDao.getAll()).thenReturn(mockAvalibleBikes);
+		when(bikeDao.getAll()).thenReturn(mockAvailableBikes);
 		
 		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
 		assertTrue(actualBikes.isEmpty());

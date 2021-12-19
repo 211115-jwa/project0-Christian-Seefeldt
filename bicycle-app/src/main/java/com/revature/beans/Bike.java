@@ -7,7 +7,7 @@ public class Bike {
 	private String color;
 	private String brakes;
 	private String wheels;
-	private String avalible;
+	private String available;
 	private boolean electric;
 	private int frameSize;
 	private int speeds;
@@ -20,7 +20,7 @@ public class Bike {
 		color = "Basic";
 		brakes = "Basic";
 		wheels = "Basic";
-		avalible= "Avalible";
+		available= "Available";
 		electric = false;
 		speeds = 1;
 		frameSize = 25;
@@ -62,11 +62,11 @@ public class Bike {
 	public void setWheels(String wheels) {
 		this.wheels = wheels;
 	}
-	public String isAvalible() {
-		return avalible;
+	public String isAvailable() {
+		return available;
 	}
-	public void setAvalible(String avalible) {
-		this.avalible = avalible;
+	public void setAvailable(String available) {
+		this.available = available;
 	}
 	public boolean isElectric() {
 		return electric;
