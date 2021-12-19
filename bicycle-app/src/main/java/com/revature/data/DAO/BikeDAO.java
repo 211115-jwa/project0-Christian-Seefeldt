@@ -8,7 +8,7 @@ public interface BikeDAO extends GenericDao<Bike> {
 	
 	public Bike getById(int id);
 	
-	public Set<Bike> getByAvalible(boolean avalible);
+	public Set<Bike> getByAvalible(String avalible);
 	
 	public Set<Bike> getByBrand(String brand);
 	

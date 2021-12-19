@@ -28,7 +28,7 @@ public class BikeDAOTest {
 	}
 	@Test
 	public void getByAvalible() {
-		Set<Bike> givenOutput = bikeDao.getByAvalible(true);
+		Set<Bike> givenOutput = bikeDao.getByAvalible("Avalible");
 		assertNotNull(givenOutput);
 		Set<Bike> expectedBikes = new HashSet<>();
 		assertNotEquals(expectedBikes, givenOutput);
@@ -178,11 +178,14 @@ public class BikeDAOTest {
 		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void addNewBike() {
+	public void addNewPet() {
 		Bike newBike = new Bike();
 		System.out.println(newBike);
+		
 		int generatedId = bikeDao.create(newBike);
+		
 		assertNotEquals(0, generatedId);
 		System.out.println(generatedId);
 	}
+
 }

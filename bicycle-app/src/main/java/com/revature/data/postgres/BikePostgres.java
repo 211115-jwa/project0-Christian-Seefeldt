@@ -22,7 +22,7 @@ public class BikePostgres implements BikeDAO {
 			
 			conn.setAutoCommit(false);
 			
-			String sql = "insert into bike (id, brand, model, color, brakes, wheels, electric, avalible, frameSize, speeds, price) "
+			String sql = "insert into bike (id, brand, model, color, brakes, wheels, avalible, electric, frameSize, speeds, price) "
 					+ "values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			String[] keys = {"id"};
@@ -34,8 +34,8 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setString(3, dataToAdd.getColor());
 			pStmt.setString(4, dataToAdd.getBrakes());
 			pStmt.setString(5, dataToAdd.getWheels());
-			pStmt.setBoolean(6, dataToAdd.isElectric());
-			pStmt.setBoolean(7, dataToAdd.isAvalible());
+			pStmt.setString(6, dataToAdd.isAvalible());
+			pStmt.setBoolean(7, dataToAdd.isElectric());
 			pStmt.setInt(8, dataToAdd.getFrameSize());
 			pStmt.setInt(9, dataToAdd.getSpeeds());
 			pStmt.setFloat(10, dataToAdd.getPrice());
@@ -80,11 +80,11 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getInt("price"));
+				bike.setPrice(resultSet.getFloat("price"));
 			}
 			
 			
@@ -115,11 +115,11 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getInt("price"));
+				bike.setPrice(resultSet.getFloat("price"));
 				
 				allBikes.add(bike);
 			}
@@ -139,7 +139,7 @@ public class BikePostgres implements BikeDAO {
 			conn.setAutoCommit(false);
 			
 			String sql = "update bike set "
-					+ "brand=?,model=?,color=?,brakes=?,wheels=?,electric=?,avalible=?,frameSize=?,speeds=?,Price=? "
+					+ "brand=?,model=?,color=?,brakes=?,wheels=?,avalible=?,electric=?,frameSize=?,speeds=?,Price=? "
 					+ "where id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, dataToUpdate.getBrand());
@@ -147,8 +147,8 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setString(3, dataToUpdate.getColor());
 			pStmt.setString(4, dataToUpdate.getBrakes());
 			pStmt.setString(5, dataToUpdate.getWheels());
-			pStmt.setBoolean(6, dataToUpdate.isElectric());
-			pStmt.setBoolean(7, dataToUpdate.isAvalible());
+			pStmt.setString(6, dataToUpdate.isAvalible());
+			pStmt.setBoolean(7, dataToUpdate.isElectric());
 			pStmt.setInt(8, dataToUpdate.getFrameSize());
 			pStmt.setInt(9, dataToUpdate.getSpeeds());
 			pStmt.setFloat(10, dataToUpdate.getPrice());
@@ -202,13 +202,13 @@ public class BikePostgres implements BikeDAO {
 
 
 	@Override
-	public Set<Bike> getByAvalible(boolean avalible) {
+	public Set<Bike> getByAvalible(String avalible) {
 		Set<Bike> allBikes = new HashSet<>();
 
 		try (Connection conn = connUtil.getConnection()) {
 			String sql = "select * from bike where avalible=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setBoolean(1, avalible);
+			pStmt.setString(1, avalible);
 	
 			ResultSet resultSet = pStmt.executeQuery();
 
@@ -223,12 +223,12 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
-
+				
 				allBikes.add(bike);
 			}
 
@@ -262,8 +262,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -300,8 +300,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -338,8 +338,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -376,8 +376,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -414,12 +414,12 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
-
+				
 				allBikes.add(bike);
 			}
 
@@ -452,11 +452,12 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
+				
 
 				allBikes.add(bike);
 			}
@@ -490,8 +491,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -528,8 +529,8 @@ public class BikePostgres implements BikeDAO {
 				bike.setColor(resultSet.getString("color"));
 				bike.setBrakes(resultSet.getString("brakes"));
 				bike.setWheels(resultSet.getString("wheels"));
+				bike.setAvalible(resultSet.getString("avalible"));
 				bike.setElectric(resultSet.getBoolean("electric"));
-				bike.setAvalible(resultSet.getBoolean("avalible"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
 				bike.setPrice(resultSet.getFloat("price"));
@@ -565,8 +566,8 @@ public class BikePostgres implements BikeDAO {
 					bike.setColor(resultSet.getString("color"));
 					bike.setBrakes(resultSet.getString("brakes"));
 					bike.setWheels(resultSet.getString("wheels"));
+					bike.setAvalible(resultSet.getString("avalible"));
 					bike.setElectric(resultSet.getBoolean("electric"));
-					bike.setAvalible(resultSet.getBoolean("avalible"));
 					bike.setFrameSize(resultSet.getInt("frameSize"));
 					bike.setSpeeds(resultSet.getInt("speeds"));
 					bike.setPrice(resultSet.getFloat("price"));
@@ -602,8 +603,8 @@ public class BikePostgres implements BikeDAO {
 					bike.setColor(resultSet.getString("color"));
 					bike.setBrakes(resultSet.getString("brakes"));
 					bike.setWheels(resultSet.getString("wheels"));
+					bike.setAvalible(resultSet.getString("avalible"));
 					bike.setElectric(resultSet.getBoolean("electric"));
-					bike.setAvalible(resultSet.getBoolean("avalible"));
 					bike.setFrameSize(resultSet.getInt("frameSize"));
 					bike.setSpeeds(resultSet.getInt("speeds"));
 					bike.setPrice(resultSet.getFloat("price"));

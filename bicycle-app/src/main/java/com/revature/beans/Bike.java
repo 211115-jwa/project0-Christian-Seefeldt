@@ -3,25 +3,25 @@ package com.revature.beans;
 public class Bike {
 	private int id;
 	private String brand;
-	private String model; //
+	private String model; 
 	private String color;
 	private String brakes;
 	private String wheels;
+	private String avalible;
 	private boolean electric;
-	private boolean avalible;
 	private int frameSize;
 	private int speeds;
 	private float price;
 	
 	public Bike() {
 		id = 0;
-		brand = null;
-		model = null;
-		color = null;
-		brakes = null;
-		wheels = null;
+		brand = "Basic";
+		model = "Basic";
+		color = "Basic";
+		brakes = "Basic";
+		wheels = "Basic";
+		avalible= "Avalible";
 		electric = false;
-		avalible= true;
 		speeds = 1;
 		frameSize = 25;
 		price = 500;		
@@ -62,17 +62,17 @@ public class Bike {
 	public void setWheels(String wheels) {
 		this.wheels = wheels;
 	}
+	public String isAvalible() {
+		return avalible;
+	}
+	public void setAvalible(String avalible) {
+		this.avalible = avalible;
+	}
 	public boolean isElectric() {
 		return electric;
 	}
 	public void setElectric(boolean electric) {
 		this.electric = electric;
-	}
-	public boolean isAvalible() {
-		return avalible;
-	}
-	public void setAvalible(boolean avalible) {
-		this.avalible = avalible;
 	}
 	public int getFrameSize() {
 		return frameSize;
