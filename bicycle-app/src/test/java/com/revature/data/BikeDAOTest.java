@@ -22,19 +22,69 @@ public class BikeDAOTest {
 	@Test
 	public void getByIdWhenIdDoesNotExists() {
 		int idInput = -1;
-		Bike petOutput = bikeDao.getById(idInput);
-		assertNull(petOutput);
+		Bike bikeOutput = bikeDao.getById(idInput);
+		assertNull(bikeOutput);
 	}
 	@Test
-	public void getAll() {
+	public void getByAvalible() {
 		Set<Bike> givenOutput = bikeDao.getAll();
 		assertNotNull(givenOutput);
 	}
 	@Test
-	public void addNewPet() {
-		Bike newPet = new Bike();
-		System.out.println(newPet);
-		int generatedId = bikeDao.create(newPet);
+	public void getByBrand() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByModel() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByColor() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByBrakes() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByWheels() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByElec() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByFrameSize() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getBySpeeds() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByFrameSize() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void getByFrameSize() {
+		Set<Bike> givenOutput = bikeDao.getAll();
+		assertNotNull(givenOutput);
+	}
+	@Test
+	public void addNewBike() {
+		Bike newBike = new Bike();
+		System.out.println(newBike);
+		int generatedId = bikeDao.create(newBike);
 		assertNotEquals(0, generatedId);
 		System.out.println(generatedId);
 	}
