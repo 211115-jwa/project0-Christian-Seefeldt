@@ -8,6 +8,7 @@ import com.revature.data.postgres.BikePostgres;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class BikeDAOTest {
@@ -27,58 +28,154 @@ public class BikeDAOTest {
 	}
 	@Test
 	public void getByAvalible() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+		Set<Bike> givenOutput = bikeDao.getByAvalible(true);
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByBrand() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByBrandWhenBrandDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByBrand("Kent");
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByModel() {
-		Set<Bike> givenOutput = bikeDao.getAll();
-		assertNotNull(givenOutput);
+	public void getByBrandWhenBrandDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByBrand("QQ7");
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByColor() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByModelWhenModelDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByModel("Mountain");
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByBrakes() {
-		Set<Bike> givenOutput = bikeDao.getAll();
-		assertNotNull(givenOutput);
+	public void getByModelWhenModelDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByModel("QQ7");
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByWheels() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByColorWhenColorDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByColor("red");
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByElec() {
-		Set<Bike> givenOutput = bikeDao.getAll();
-		assertNotNull(givenOutput);
+	public void getByColorWhenColorDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByColor("QQ7");
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByFrameSize() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByBrakesWhenBrakesDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByBrakes("linear pull");
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getBySpeeds() {
-		Set<Bike> givenOutput = bikeDao.getAll();
-		assertNotNull(givenOutput);
+	public void getByBrakesWhenBrakesDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByBrakes("QQ7");
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByFrameSize() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByWheelsWhenWheelsDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByWheels("steel");
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
-	public void getByFrameSize() {
-		Set<Bike> givenOutput = bikeDao.getAll();
+	public void getByWheelsWhenWheelsDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByWheels("QQ7");
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByElecWhenTrue() {
+		Set<Bike> givenOutput = bikeDao.getByElec(true);
 		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByElecWhenFalse() {
+		Set<Bike> givenOutput = bikeDao.getByElec(false);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByFrameSizeWhenFrameSizeDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getByFrameSize(25);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByFrameSizeWhenFrameSizeDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByFrameSize(987654321);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getBySpeedsWhenSpeedsDoesExist() {
+		Set<Bike> givenOutput = bikeDao.getBySpeeds(7);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getBySpeedsWhenSpeedsDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getBySpeeds(987654321);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getBypriceWhenPriceDoesExsit() {
+		Set<Bike> givenOutput = bikeDao.getByPrice(198);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getBypriceWhenPriceDoesntExist() {
+		Set<Bike> givenOutput = bikeDao.getByPrice(987654321);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByPricesWhenPricesDoExist() {
+		Set<Bike> givenOutput = bikeDao.getByPriceRange(100, 300);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByPricesWhenPricesDontExist() {
+		Set<Bike> givenOutput = bikeDao.getByPriceRange(987654321, 987654321);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByPricesWhenOnlyOnePriceEntered() {
+		Set<Bike> givenOutput = bikeDao.getByPriceRange(280, 280);
+		assertNotNull(givenOutput);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertNotEquals(expectedBikes, givenOutput);
+	}
+	@Test
+	public void getByPricesWhenPriceEnteredBackwards() {
+		Set<Bike> givenOutput = bikeDao.getByPriceRange(300, 100);
+		Set<Bike> expectedBikes = new HashSet<>();
+		assertEquals(expectedBikes, givenOutput);
 	}
 	@Test
 	public void addNewBike() {
