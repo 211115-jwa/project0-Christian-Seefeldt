@@ -1,6 +1,5 @@
 package com.revature.data.DAO;
 
-import java.util.List;
 import java.util.Set;
 
 public interface GenericDao<D> {

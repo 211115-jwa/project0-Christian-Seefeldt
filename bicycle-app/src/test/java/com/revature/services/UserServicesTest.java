@@ -113,21 +113,127 @@ public class UserServicesTest {
 		Person actualPerson = userServ.register(person);
 		assertNull(actualPerson);
 	}
-	
 //	@Test
 //	public void searchByBrandExists() {
-//		String brand = "Kent";
+//		String brand = "cat";
 //		
-//		when(BikeDAO.getByAvailable("Available")).thenReturn(mockAvailableBikes);
+//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
 //		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
+//		Set<Pet> actualCats = userServ.searchAvailablePetsBySpecies(species);
+//		boolean onlyCats = true;
+//		for (Pet pet : actualCats) {
+//			if (!pet.getSpecies().equals(species))
+//				onlyCats = false;
 //		}
 //		
-//		assertTrue(onlyBikes);
+//		assertTrue(onlyCats);
 //	}
-
+//	
+//	@Test
+//	public void searchBySpeciesDoesNotExist() {
+//		String species = "qwertyuiop";
+//		
+//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
+//		
+//		Set<Pet> actualPets = userServ.searchAvailablePetsBySpecies(species);
+//		assertTrue(actualPets.isEmpty());
+//	}
+//	
+//	@Test
+//	public void adoptPetSuccessfully() {
+//		int petId = 1;
+//		Person person = new Person();
+//		
+//		Pet mockPet = new Pet();
+//		mockPet.setId(1);
+//		when(petDao.getById(petId)).thenReturn(mockPet);
+//		
+//		// mock will do nothing when "update" gets called with any pet or person
+//		doNothing().when(petDao).update(Mockito.any(Pet.class));
+//		doNothing().when(personDao).update(Mockito.any(Person.class));
+//		
+//		Person newPerson = userServ.adoptPet(petId, person);
+//		
+//		// make sure that the method returned a person that has their
+//		// newly adopted pet there, and that pet has the correct status
+//		mockPet.setStatus("Adopted");
+//		assertTrue(newPerson.getPets().contains(mockPet));
+//	}
+//	
+//	@Test
+//	public void adoptPetAlreadyAdopted() {
+//		int petId = 1;
+//		Person person = new Person();
+//		
+//		Pet mockPet = new Pet();
+//		mockPet.setId(1);
+//		mockPet.setStatus("Adopted");
+//		when(petDao.getById(petId)).thenReturn(mockPet);
+//		
+//		Person newPerson = userServ.adoptPet(petId, person);
+//		
+//		assertNull(newPerson);
+//		
+//		// these Mockito methods will verify that neither of these
+//		// update methods got called
+//		verify(petDao, times(0)).update(Mockito.any(Pet.class));
+//		verify(personDao, times(0)).update(Mockito.any(Person.class));
+//	}
+//	
+//	@Test
+//	public void updateSuccessfully() {
+//		Person mockPerson = new Person();
+//		mockPerson.setId(1);
+//		
+//		doNothing().when(personDao).update(Mockito.any(Person.class));
+//		when(personDao.getById(1)).thenReturn(mockPerson);
+//		
+//		Person person = new Person();
+//		person.setId(1);
+//		person.setUsername("qwertyuiop");
+//		Person updatedPerson = userServ.updateUser(person);
+//		assertNotEquals(person, updatedPerson);
+//	}
+//	
+//	@Test
+//	public void updateSomethingWrong() {
+//		Person mockPerson = new Person();
+//		mockPerson.setId(1);
+//		
+//		doNothing().when(personDao).update(Mockito.any(Person.class));
+//		when(personDao.getById(1)).thenReturn(mockPerson);
+//		
+//		Person person = new Person();
+//		person.setId(1);
+//		person.setUsername("qwertyuiop");
+//		Person updatedPerson = userServ.updateUser(person);
+//		assertNotEquals(person, updatedPerson);
+//	}
+//	
+//	@Test
+//	public void viewAvailablePets() {
+//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
+//		
+//		Set<Pet> actualPets = userServ.viewAvailablePets();
+//		
+//		assertEquals(mockAvailablePets, actualPets);
+//	}
+//}
+//
+////	@Test
+////	public void searchByBrandExists() {
+////		String brand = "Kent";
+////		
+////		when(BikeDAO.getByAvailable("Available")).thenReturn(mockAvailableBikes);
+////		
+////		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+////		boolean onlyBikes = true;
+////		for (Bike bike : actualBikes) {
+////			if (!bike.getBrand().equals(brand))
+////				onlyBikes = false;
+////		}
+////		
+////		assertTrue(onlyBikes);
+////	}
+//
 }

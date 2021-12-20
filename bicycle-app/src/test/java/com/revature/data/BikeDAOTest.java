@@ -180,12 +180,8 @@ public class BikeDAOTest {
 	@Test
 	public void addNewPet() {
 		Bike newBike = new Bike();
-		System.out.println(newBike);
-		
 		int generatedId = bikeDao.create(newBike);
-		
 		assertNotEquals(0, generatedId);
-		System.out.println(generatedId);
 	}
 
 }
