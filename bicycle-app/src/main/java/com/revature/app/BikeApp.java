@@ -33,7 +33,7 @@ public class BikeApp {
 					String brandsSearch = ctx.queryParam("brand");
 					String ModelsSearch = ctx.queryParam("style");
 					String ColorsSearch = ctx.queryParam("color");
-					String BrakessSearch = ctx.queryParam("brakes");
+					String BrakessSearch = ctx.queryParam("brakes");	
 					String WheelsSearch = ctx.queryParam("wheels");
 //					boolean ElecSearch = Boolean.parseBoolean(ctx.queryParam("electric"));
 //					int FrameSizesSearch = Integer.parseInt(ctx.queryParam("frameSize"));
@@ -96,7 +96,52 @@ public class BikeApp {
 					ctx.json(availableBikes);
 				}
 			});
-			
+				post(ctx -> {
+					Bike newBike = ctx.bodyAsClass(Bike.class);
+					if (newBike !=null) {
+						empServ.addNewBike(newBike);
+						ctx.status(HttpStatus.CREATED_201);
+						ctx.json(newBike);
+					} else {
+						ctx.status(HttpStatus.BAD_REQUEST_400);
+					}
+				});
+		});
+			path("/bikes/{id}", () -> {
+				get(ctx -> {
+						try {
+							int bikeId = Integer.parseInt(ctx.pathParam("id"));
+							Bike bike = empServ.getBikeById(bikeId);
+							if (bike != null)
+								ctx.json(bike);
+							else
+								ctx.status(404);
+						} catch (NumberFormatException e) {
+							ctx.status(400);
+							ctx.result("Bike ID must be a numeric value");
+						}
+					});
+					
+				put(ctx -> {
+						try {
+							int bikeId = Integer.parseInt(ctx.pathParam("id"));
+							Bike bikeToEdit = ctx.bodyAsClass(Bike.class);
+							if (bikeToEdit != null && bikeToEdit.getId() == bikeId) {
+								bikeToEdit = empServ.editBike(bikeToEdit);
+								if (bikeToEdit != null)
+									ctx.json(bikeToEdit);
+								else
+									ctx.status(404);
+							} else {
+								
+								ctx.status(HttpCode.CONFLICT);
+							}
+						} catch (NumberFormatException e) {
+							ctx.status(400);
+							ctx.result("Bike ID must be a numeric value");
+						}
+
+			});
 		});
 	});
 }

@@ -29,7 +29,7 @@ public class Bike {
 	public int getId() {
 		return id;
 	}
-	public void setID(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getBrand() {
@@ -91,9 +91,6 @@ public class Bike {
 	}
 	public void setPrice(float price) {
 		this.price = price;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	@Override
