@@ -35,7 +35,7 @@ public class BikeDAOTest {
 	}
 	@Test
 	public void getByBrandWhenBrandDoesExist() {
-		Set<Bike> givenOutput = bikeDao.getByBrand("Kent");
+		Set<Bike> givenOutput = bikeDao.getByBrand("Huffy");
 		assertNotNull(givenOutput);
 		Set<Bike> expectedBikes = new HashSet<>();
 		assertNotEquals(expectedBikes, givenOutput);

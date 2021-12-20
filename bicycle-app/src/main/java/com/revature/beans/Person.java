@@ -14,6 +14,8 @@ public class Person {
 	
 	public Person() {
 		id = 0;
+		usr = "QQ7";
+		psw = "QQ7";
 		firstName = "QQ7";
 		lastName = "QQ7";
 		userRole = "Customer";

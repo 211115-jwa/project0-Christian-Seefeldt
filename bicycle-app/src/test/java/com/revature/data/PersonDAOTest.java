@@ -26,7 +26,7 @@ public class PersonDAOTest {
 		@Test
 		public void getValidPersonById()
 		{
-			String expectedUsername = "Christian";
+			String expectedUsername = "CDS";
 			Person actualUsername = personDao.getById(1);
 			assertEquals(expectedUsername, actualUsername.getUsername());
 		}
@@ -42,7 +42,7 @@ public class PersonDAOTest {
 			Person personUp = personDao.getById(1);
 			personUp.setFirstName("Bob");
 			personDao.update(personUp);
-			assertEquals("Bob",personDao.getById(1).getFirstName());	
+			assertEquals("Bob",personDao.getById(1).getFirstName());
 		}
 	
 		@Test

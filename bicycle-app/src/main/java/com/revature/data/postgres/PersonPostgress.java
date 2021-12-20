@@ -188,13 +188,13 @@ public class PersonPostgress implements PersonDAO {
 
 
 	@Override
-	public Person getByUsername(String username) {
+	public Person getByUsername(String usr) {
 		Person person = null;
 		
 		try (Connection conn = connUtil.getConnection()) {
-			String sql = "select * from person where username=?";
+			String sql = "select * from person where usr=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, username);
+			pStmt.setString(1, usr);
 			
 			ResultSet resultSet = pStmt.executeQuery();
 			
