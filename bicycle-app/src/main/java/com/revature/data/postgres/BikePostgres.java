@@ -152,6 +152,7 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setInt(8, dataToUpdate.getFrameSize());
 			pStmt.setInt(9, dataToUpdate.getSpeeds());
 			pStmt.setDouble(10, dataToUpdate.getPrice());
+			pStmt.setInt(11, dataToUpdate.getId());
 			
 			
 			int rowsAffected = pStmt.executeUpdate();
