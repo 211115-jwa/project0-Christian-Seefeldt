@@ -1,8 +1,6 @@
 package com.revature.services;
 
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -10,12 +8,14 @@ import com.revature.beans.Bike;
 import com.revature.beans.Person;
 import com.revature.data.DAO.BikeDAO;
 import com.revature.data.DAO.PersonDAO;
+import com.revature.data.postgres.PersonPostgress;
+import com.revature.data.postgres.BikePostgres;
+
 
 public class UserServiceImpl implements UserService {
-	private PersonDAO personDao;
-	private BikeDAO bikeDao;
-	private Set<Bike> allBikes  = new HashSet<Bike>();
-	private BikeDAO bikedao;
+	private PersonDAO personDao = new PersonPostgress();
+	private BikeDAO bikeDao = new BikePostgres();
+
 	
 	@Override
 	public Person register(Person newUser) {

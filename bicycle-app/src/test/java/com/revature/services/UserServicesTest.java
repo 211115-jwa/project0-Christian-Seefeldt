@@ -114,20 +114,20 @@ public class UserServicesTest {
 		assertNull(actualPerson);
 	}
 	
-	@Test
-	public void searchByBrandExists() {
-		String brand = "Kent";
-		
-		when(BikeDAO.getByAvailable("Available")).thenReturn(mockAvailableBikes);
-		
-		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-		boolean onlyBikes = true;
-		for (Bike bike : actualBikes) {
-			if (!bike.getBrand().equals(brand))
-				onlyBikes = false;
-		}
-		
-		assertTrue(onlyBikes);
-	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDAO.getByAvailable("Available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
+//	}
 
 }

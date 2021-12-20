@@ -35,11 +35,11 @@ public class BikeApp {
 					String ColorsSearch = ctx.queryParam("color");
 					String BrakessSearch = ctx.queryParam("brakes");
 					String WheelsSearch = ctx.queryParam("wheels");
-//					Boolean ElecSearch = ctx.queryParam("electric");
-//					int FrameSizesSearch = ctx.queryParam("frameSize").parseInt;
-//					int SpeedsSearch = ctx.queryParam(Integer.parseInt("speeds"));
-//					float PriceSearch = ctx.queryParam("price");
-//					float PricesSearch = ctx.queryParam("price", "price");
+//					boolean ElecSearch = Boolean.parseBoolean(ctx.queryParam("electric"));
+//					int FrameSizesSearch = Integer.parseInt(ctx.queryParam("frameSize"));
+//					int SpeedsSearch = Integer.parseInt(ctx.queryParam("speeds"));
+//					float PriceSearch = Float.parseFloat(ctx.queryParam("price"));
+//					float PricesSearch = Float.parseFloat("price", "price");
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);

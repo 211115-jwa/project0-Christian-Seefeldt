@@ -95,4 +95,82 @@ public class Bike {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((available == null) ? 0 : available.hashCode());
+		result = prime * result + ((brakes == null) ? 0 : brakes.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((color == null) ? 0 : color.hashCode());
+		result = prime * result + (electric ? 1231 : 1237);
+		result = prime * result + frameSize;
+		result = prime * result + id;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + Float.floatToIntBits(price);
+		result = prime * result + speeds;
+		result = prime * result + ((wheels == null) ? 0 : wheels.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bike other = (Bike) obj;
+		if (available == null) {
+			if (other.available != null)
+				return false;
+		} else if (!available.equals(other.available))
+			return false;
+		if (brakes == null) {
+			if (other.brakes != null)
+				return false;
+		} else if (!brakes.equals(other.brakes))
+			return false;
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
+			return false;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (electric != other.electric)
+			return false;
+		if (frameSize != other.frameSize)
+			return false;
+		if (id != other.id)
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+			return false;
+		if (speeds != other.speeds)
+			return false;
+		if (wheels == null) {
+			if (other.wheels != null)
+				return false;
+		} else if (!wheels.equals(other.wheels))
+			return false;
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Bike [id=" + id + ", brand=" + brand + ", model=" + model + ", color=" + color + ", brakes=" + brakes
+				+ ", wheels=" + wheels + ", available=" + available + ", electric=" + electric + ", frameSize="
+				+ frameSize + ", speeds=" + speeds + ", price=" + price + "]";
+	}
+	
 }
