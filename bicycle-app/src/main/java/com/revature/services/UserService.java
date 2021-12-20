@@ -1,6 +1,5 @@
 package com.revature.services;
 
-import java.util.List;
 import java.util.Set;
 
 import com.revature.beans.Bike;
@@ -20,8 +19,8 @@ public interface UserService {
 	public Set<Bike> searchAvailablebikesByElec(Boolean electric);
 	public Set<Bike> searchAvailablebikesByFrame(int frameSize);
 	public Set<Bike> searchAvailablebikesBySpeeds(int speeds);
-	public Set<Bike> searchAvailablebikesByPrice(float price);
-	public Set<Bike> searchAvailablebikesByPriceRange(float price1, float price2);
+	public Set<Bike> searchAvailablebikesByPrice(double price);
+	public Set<Bike> searchAvailablebikesByPriceRange(double price1, double price2);
 }
 
 

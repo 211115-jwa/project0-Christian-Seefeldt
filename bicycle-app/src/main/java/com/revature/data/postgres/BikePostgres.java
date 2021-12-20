@@ -38,7 +38,7 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setBoolean(7, dataToAdd.isElectric());
 			pStmt.setInt(8, dataToAdd.getFrameSize());
 			pStmt.setInt(9, dataToAdd.getSpeeds());
-			pStmt.setFloat(10, dataToAdd.getPrice());
+			pStmt.setDouble(10, dataToAdd.getPrice());
 			
 			
 			pStmt.executeUpdate();
@@ -84,7 +84,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 			}
 			
 			
@@ -119,7 +119,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 				
 				allBikes.add(bike);
 			}
@@ -151,7 +151,7 @@ public class BikePostgres implements BikeDAO {
 			pStmt.setBoolean(7, dataToUpdate.isElectric());
 			pStmt.setInt(8, dataToUpdate.getFrameSize());
 			pStmt.setInt(9, dataToUpdate.getSpeeds());
-			pStmt.setFloat(10, dataToUpdate.getPrice());
+			pStmt.setDouble(10, dataToUpdate.getPrice());
 			
 			
 			int rowsAffected = pStmt.executeUpdate();
@@ -227,7 +227,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 				
 				allBikes.add(bike);
 			}
@@ -266,7 +266,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -304,7 +304,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -342,7 +342,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -380,7 +380,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -418,7 +418,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 				
 				allBikes.add(bike);
 			}
@@ -456,7 +456,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 				
 
 				allBikes.add(bike);
@@ -495,7 +495,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -533,7 +533,7 @@ public class BikePostgres implements BikeDAO {
 				bike.setElectric(resultSet.getBoolean("electric"));
 				bike.setFrameSize(resultSet.getInt("frameSize"));
 				bike.setSpeeds(resultSet.getInt("speeds"));
-				bike.setPrice(resultSet.getFloat("price"));
+				bike.setPrice(resultSet.getDouble("price"));
 
 				allBikes.add(bike);
 			}
@@ -545,13 +545,13 @@ public class BikePostgres implements BikeDAO {
 		return allBikes;
 	}
 		@Override
-		public Set<Bike> getByPrice(float price) {
+		public Set<Bike> getByPrice(double price) {
 			Set<Bike> allBikes = new HashSet<>();
 
 			try (Connection conn = connUtil.getConnection()) {
 				String sql = "select * from bike where price=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setFloat(1, price);
+				pStmt.setDouble(1, price);
 		
 				ResultSet resultSet = pStmt.executeQuery();
 
@@ -570,7 +570,7 @@ public class BikePostgres implements BikeDAO {
 					bike.setElectric(resultSet.getBoolean("electric"));
 					bike.setFrameSize(resultSet.getInt("frameSize"));
 					bike.setSpeeds(resultSet.getInt("speeds"));
-					bike.setPrice(resultSet.getFloat("price"));
+					bike.setPrice(resultSet.getDouble("price"));
 
 					allBikes.add(bike);
 				}
@@ -583,7 +583,7 @@ public class BikePostgres implements BikeDAO {
 		}
 
 		@Override
-		public Set<Bike> getByPriceRange(float price, float price1) {
+		public Set<Bike> getByPriceRange(double price, double price1) {
 			Set<Bike> allBikes = new HashSet<>();
 
 			try (Connection conn = connUtil.getConnection()) {
@@ -607,7 +607,7 @@ public class BikePostgres implements BikeDAO {
 					bike.setElectric(resultSet.getBoolean("electric"));
 					bike.setFrameSize(resultSet.getInt("frameSize"));
 					bike.setSpeeds(resultSet.getInt("speeds"));
-					bike.setPrice(resultSet.getFloat("price"));
+					bike.setPrice(resultSet.getDouble("price"));
 
 					allBikes.add(bike);
 				}

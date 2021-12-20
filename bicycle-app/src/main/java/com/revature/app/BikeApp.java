@@ -38,8 +38,8 @@ public class BikeApp {
 //					boolean ElecSearch = Boolean.parseBoolean(ctx.queryParam("electric"));
 //					int FrameSizesSearch = Integer.parseInt(ctx.queryParam("frameSize"));
 //					int SpeedsSearch = Integer.parseInt(ctx.queryParam("speeds"));
-//					float PriceSearch = Float.parseFloat(ctx.queryParam("price"));
-//					float PricesSearch = Float.parseFloat("price", "price");
+//					double PriceSearch = Double.parseDouble(ctx.queryParam("price"));
+//					double PricesSearch = Double.parseDouble("price", "price");
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);

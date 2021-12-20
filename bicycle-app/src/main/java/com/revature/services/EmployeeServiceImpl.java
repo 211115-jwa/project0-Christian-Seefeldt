@@ -14,8 +14,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Bike editBike(Bike bikeToEdit) {
-		Bike petFromDatabase = bikeDao.getById(bikeToEdit.getId());
-		if (petFromDatabase != null) {
+		Bike bikeFromDatabase = bikeDao.getById(bikeToEdit.getId());
+		if (bikeFromDatabase != null) {
 			bikeDao.update(bikeToEdit);
 			return bikeDao.getById(bikeToEdit.getId());
 		}

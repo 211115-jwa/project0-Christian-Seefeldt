@@ -26,9 +26,9 @@ public interface BikeDAO extends GenericDao<Bike> {
 	
 	public Set<Bike> getBySpeeds(int speeds);
 	
-	public Set<Bike> getByPrice(float price);
+	public Set<Bike> getByPrice(double price);
 	
-	public Set<Bike> getByPriceRange(float price, float price1);
+	public Set<Bike> getByPriceRange(double price, double price1);
 	
 	
 

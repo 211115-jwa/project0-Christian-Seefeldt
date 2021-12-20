@@ -156,7 +156,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Set<Bike> searchAvailablebikesByPrice(float price) {
+	public Set<Bike> searchAvailablebikesByPrice(double price) {
 		Set<Bike> availableBikes = bikeDao.getByAvailable("available");
 		
 		availableBikes = availableBikes.stream()
@@ -167,7 +167,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Set<Bike> searchAvailablebikesByPriceRange(float price1, float price2) {
+	public Set<Bike> searchAvailablebikesByPriceRange(double price1, double price2) {
 		Set<Bike> availableBikes = bikeDao.getByAvailable("available");
 		
 		availableBikes = availableBikes.stream()

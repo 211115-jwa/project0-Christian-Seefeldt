@@ -11,7 +11,7 @@ public class Bike {
 	private boolean electric;
 	private int frameSize;
 	private int speeds;
-	private float price;
+	private double price;
 	
 	public Bike() {
 		id = 0;
@@ -86,10 +86,10 @@ public class Bike {
 	public void setSpeeds(int speeds) {
 		this.speeds = speeds;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
@@ -105,12 +105,13 @@ public class Bike {
 		result = prime * result + frameSize;
 		result = prime * result + id;
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + Float.floatToIntBits(price);
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + speeds;
 		result = prime * result + ((wheels == null) ? 0 : wheels.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -151,7 +152,7 @@ public class Bike {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (speeds != other.speeds)
 			return false;

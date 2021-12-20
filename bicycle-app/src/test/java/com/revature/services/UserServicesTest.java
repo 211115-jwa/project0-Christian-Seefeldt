@@ -28,7 +28,7 @@ import com.revature.data.DAO.BikeDAO;
 public class UserServicesTest {
 
 	@Mock
-	private BikeDAO Bikeao;
+	private BikeDAO BikeDao;
 	
 	@Mock
 	private PersonDAO personDao;
@@ -48,6 +48,16 @@ public class UserServicesTest {
 			bike.setId(i);
 			if (i<3)
 				bike.setBrand("Kent");
+				bike.setModel("Mountain");
+				bike.setColor("red");
+				bike.setBrakes("cruiser");
+				bike.setWheels("blue");
+				bike.setAvailable("available");
+				bike.setElectric(false);
+				bike.setFrameSize(25);
+				bike.setSpeeds(5);
+				bike.setPrice(150.43);
+				
 			mockAvailableBikes.add(bike);
 		}
 	}
@@ -113,127 +123,304 @@ public class UserServicesTest {
 		Person actualPerson = userServ.register(person);
 		assertNull(actualPerson);
 	}
+	@Test
+	public void searchByModelExists() {
+		String model = "Mountain";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByModel(model);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.getBrand().equals(model))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+//	@Test
+//	public void searchByModelDoesNotExist() {
+//		String model = "qwertyuiop";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
 //	@Test
 //	public void searchByBrandExists() {
-//		String brand = "cat";
+//		String brand = "Kent";
 //		
-//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		Set<Pet> actualCats = userServ.searchAvailablePetsBySpecies(species);
-//		boolean onlyCats = true;
-//		for (Pet pet : actualCats) {
-//			if (!pet.getSpecies().equals(species))
-//				onlyCats = false;
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
 //		}
 //		
-//		assertTrue(onlyCats);
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void searchBySpeciesDoesNotExist() {
-//		String species = "qwertyuiop";
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		Set<Pet> actualPets = userServ.searchAvailablePetsBySpecies(species);
-//		assertTrue(actualPets.isEmpty());
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void adoptPetSuccessfully() {
-//		int petId = 1;
-//		Person person = new Person();
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		Pet mockPet = new Pet();
-//		mockPet.setId(1);
-//		when(petDao.getById(petId)).thenReturn(mockPet);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		// mock will do nothing when "update" gets called with any pet or person
-//		doNothing().when(petDao).update(Mockito.any(Pet.class));
-//		doNothing().when(personDao).update(Mockito.any(Person.class));
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
 //		
-//		Person newPerson = userServ.adoptPet(petId, person);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		// make sure that the method returned a person that has their
-//		// newly adopted pet there, and that pet has the correct status
-//		mockPet.setStatus("Adopted");
-//		assertTrue(newPerson.getPets().contains(mockPet));
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void adoptPetAlreadyAdopted() {
-//		int petId = 1;
-//		Person person = new Person();
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		Pet mockPet = new Pet();
-//		mockPet.setId(1);
-//		mockPet.setStatus("Adopted");
-//		when(petDao.getById(petId)).thenReturn(mockPet);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		Person newPerson = userServ.adoptPet(petId, person);
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
 //		
-//		assertNull(newPerson);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		// these Mockito methods will verify that neither of these
-//		// update methods got called
-//		verify(petDao, times(0)).update(Mockito.any(Pet.class));
-//		verify(personDao, times(0)).update(Mockito.any(Person.class));
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void updateSuccessfully() {
-//		Person mockPerson = new Person();
-//		mockPerson.setId(1);
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		doNothing().when(personDao).update(Mockito.any(Person.class));
-//		when(personDao.getById(1)).thenReturn(mockPerson);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		Person person = new Person();
-//		person.setId(1);
-//		person.setUsername("qwertyuiop");
-//		Person updatedPerson = userServ.updateUser(person);
-//		assertNotEquals(person, updatedPerson);
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void updateSomethingWrong() {
-//		Person mockPerson = new Person();
-//		mockPerson.setId(1);
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		doNothing().when(personDao).update(Mockito.any(Person.class));
-//		when(personDao.getById(1)).thenReturn(mockPerson);
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		Person person = new Person();
-//		person.setId(1);
-//		person.setUsername("qwertyuiop");
-//		Person updatedPerson = userServ.updateUser(person);
-//		assertNotEquals(person, updatedPerson);
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
 //	}
 //	
 //	@Test
-//	public void viewAvailablePets() {
-//		when(petDao.getByStatus("Available")).thenReturn(mockAvailablePets);
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
 //		
-//		Set<Pet> actualPets = userServ.viewAvailablePets();
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
 //		
-//		assertEquals(mockAvailablePets, actualPets);
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
 //	}
-//}
-//
-////	@Test
-////	public void searchByBrandExists() {
-////		String brand = "Kent";
-////		
-////		when(BikeDAO.getByAvailable("Available")).thenReturn(mockAvailableBikes);
-////		
-////		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-////		boolean onlyBikes = true;
-////		for (Bike bike : actualBikes) {
-////			if (!bike.getBrand().equals(brand))
-////				onlyBikes = false;
-////		}
-////		
-////		assertTrue(onlyBikes);
-////	}
-//
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
+//	}
+//	
+//	@Test
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	@Test
+//	public void searchByBrandExists() {
+//		String brand = "Kent";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		boolean onlyBikes = true;
+//		for (Bike bike : actualBikes) {
+//			if (!bike.getBrand().equals(brand))
+//				onlyBikes = false;
+//		}
+//		
+//		assertTrue(onlyBikes);
+//	}
+//	
+//	@Test
+//	public void searchByBrandDoesNotExist() {
+//		String brand = "qwertyuiop";
+//		
+//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+//		
+//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+//		assertTrue(actualBikes.isEmpty());
+//	}
+//	
+	@Test
+	public void BuyBikeSuccessfully() {
+		int bikeID = 1;
+		Person person = new Person();
+		
+		Bike mockBike = new Bike();
+		mockBike.setId(1);
+		when(BikeDao.getById(bikeID)).thenReturn(mockBike);
+		
+		doNothing().when(BikeDao).update(Mockito.any(Bike.class));
+		doNothing().when(personDao).update(Mockito.any(Person.class));
+		
+		Person newPerson = userServ.buyBike(bikeID, person);
+
+		mockBike.setAvailable("Adopted");
+		assertTrue(newPerson.getBikes().contains(mockBike));
+	}
+	
+	@Test
+	public void BuyBikeAlreadyBought() {
+		int bikeId = 1;
+		Person person = new Person();
+		
+		Bike mockBike = new Bike();
+		mockBike.setId(1);
+		mockBike.setAvailable("available");
+		when(BikeDao.getById(bikeId)).thenReturn(mockBike);
+		
+		Person newPerson = userServ.buyBike(bikeId, person);
+		
+		assertNull(newPerson);
+		
+		verify(BikeDao, times(0)).update(Mockito.any(Bike.class));
+		verify(personDao, times(0)).update(Mockito.any(Person.class));
+	}
+	
+	@Test
+	public void updateSuccessfully() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		doNothing().when(personDao).update(Mockito.any(Person.class));
+		when(personDao.getById(1)).thenReturn(mockPerson);
+		
+		Person person = new Person();
+		person.setId(1);
+		person.setUsername("qwertyuiop");
+		Person updatedPerson = userServ.updateUser(person);
+		assertNotEquals(person, updatedPerson);
+	}
+	
+	@Test
+	public void updateSomethingWrong() {
+		Person mockPerson = new Person();
+		mockPerson.setId(1);
+		
+		doNothing().when(personDao).update(Mockito.any(Person.class));
+		when(personDao.getById(1)).thenReturn(mockPerson);
+		
+		Person person = new Person();
+		person.setId(1);
+		person.setUsername("qwertyuiop");
+		Person updatedPerson = userServ.updateUser(person);
+		assertNotEquals(person, updatedPerson);
+	}
+	
+	@Test
+	public void viewAvailableBikes() {
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.viewAvailableBikes();
+		
+		assertEquals(mockAvailableBikes, actualBikes);
+	}
 }
