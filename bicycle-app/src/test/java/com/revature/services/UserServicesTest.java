@@ -123,6 +123,33 @@ public class UserServicesTest {
 		Person actualPerson = userServ.register(person);
 		assertNull(actualPerson);
 	}
+	
+	@Test
+	public void searchByBrandExists() {
+		String brand = "Kent";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.getBrand().equals(brand))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByBrandDoesNotExist() {
+		String brand = "qwertyuiop";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
 	@Test
 	public void searchByModelExists() {
 		String model = "Mountain";
@@ -132,223 +159,206 @@ public class UserServicesTest {
 		Set<Bike> actualBikes = userServ.searchAvailablebikesByModel(model);
 		boolean onlyBikes = true;
 		for (Bike bike : actualBikes) {
-			if (!bike.getBrand().equals(model))
+			if (!bike.getModel().equals(model))
 				onlyBikes = false;
 		}
 		
 		assertTrue(onlyBikes);
 	}
 	
-//	@Test
-//	public void searchByModelDoesNotExist() {
-//		String model = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	@Test
-//	public void searchByBrandExists() {
-//		String brand = "Kent";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		boolean onlyBikes = true;
-//		for (Bike bike : actualBikes) {
-//			if (!bike.getBrand().equals(brand))
-//				onlyBikes = false;
-//		}
-//		
-//		assertTrue(onlyBikes);
-//	}
-//	
-//	@Test
-//	public void searchByBrandDoesNotExist() {
-//		String brand = "qwertyuiop";
-//		
-//		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
-//		
-//		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brand);
-//		assertTrue(actualBikes.isEmpty());
-//	}
-//	
+	@Test
+	public void searchByModelDoesNotExist() {
+		String model = "qwertyuiop";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByModel(model);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	
+	@Test
+	public void searchByColorExists() {
+		String color = "red";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByColor(color);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.getColor().equals(color))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByColorDoesNotExist() {
+		String color = "qwertyuiop";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByColor(color);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchByBrakesExists() {
+		String brakes = "cruiser";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(brakes);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.getBrand().equals(brakes))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByBrakesDoesNotExist() {
+		String brakes = "qwertyuiop";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrakes(brakes);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchByWheelsExists() {
+		String wheels = "blue";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByWheels(wheels);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.getWheels().equals(wheels))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByWheelsDoesNotExist() {
+		String wheels = "qwertyuiop";
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByBrand(wheels);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchByElectricExists() {
+		Boolean electric = false;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByElec(electric);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!bike.isElectric() == (electric))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByElectricDoesNotExist() {
+		boolean electric = true;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByElec(electric);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchByFrameSizeExists() {
+		int frameSize = 25;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByFrame(frameSize);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!(bike.getFrameSize() == (frameSize)))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByFrameSizeDoesNotExist() {
+		int frameSize = 9898;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByFrame(frameSize);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchBySpeedsExists() {
+		int speeds = 5;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesBySpeeds(speeds);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!(bike.getSpeeds() == (speeds)))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchBySpeedsDoesNotExist() {
+		int speeds = 55;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesBySpeeds(speeds);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
+	@Test
+	public void searchByPriceExists() {
+		double price = 150.43;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByPrice(price);
+		boolean onlyBikes = true;
+		for (Bike bike : actualBikes) {
+			if (!(bike.getPrice() == (price)))
+				onlyBikes = false;
+		}
+		
+		assertTrue(onlyBikes);
+	}
+	
+	@Test
+	public void searchByPriceDoesNotExist() {
+		double price = 11.11;
+		
+		when(BikeDao.getByAvailable("available")).thenReturn(mockAvailableBikes);
+		
+		Set<Bike> actualBikes = userServ.searchAvailablebikesByPrice(price);
+		assertTrue(actualBikes.isEmpty());
+	}
+	
 	@Test
 	public void BuyBikeSuccessfully() {
 		int bikeID = 1;
@@ -363,7 +373,7 @@ public class UserServicesTest {
 		
 		Person newPerson = userServ.buyBike(bikeID, person);
 
-		mockBike.setAvailable("Adopted");
+		mockBike.setAvailable("bought");
 		assertTrue(newPerson.getBikes().contains(mockBike));
 	}
 	
@@ -374,7 +384,7 @@ public class UserServicesTest {
 		
 		Bike mockBike = new Bike();
 		mockBike.setId(1);
-		mockBike.setAvailable("available");
+		mockBike.setAvailable("bought");
 		when(BikeDao.getById(bikeId)).thenReturn(mockBike);
 		
 		Person newPerson = userServ.buyBike(bikeId, person);

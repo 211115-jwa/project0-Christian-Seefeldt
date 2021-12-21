@@ -35,64 +35,80 @@ public class BikeApp {
 					String ColorsSearch = ctx.queryParam("color");
 					String BrakessSearch = ctx.queryParam("brakes");	
 					String WheelsSearch = ctx.queryParam("wheels");
-//					boolean ElecSearch = Boolean.parseBoolean(ctx.queryParam("electric"));
-//					int FrameSizesSearch = Integer.parseInt(ctx.queryParam("frameSize"));
-//					int SpeedsSearch = Integer.parseInt(ctx.queryParam("speeds"));
-//					double PriceSearch = Double.parseDouble(ctx.queryParam("price"));
-//					double PricesSearch = Double.parseDouble("price", "price");
+					String ElecSearch = ctx.queryParam("electric");
+					String FrameSizesSearch = ctx.queryParam("frameSize");
+					String SpeedsSearch = ctx.queryParam("speeds");
+					String PriceSearch = ctx.queryParam("price");
+//					String PricesSearch = ctx.queryParam("price", "price");
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
 				
 				else if (ModelsSearch != null && !"".equals(ModelsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByModel(ModelsSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
 				
 				else if (ColorsSearch != null && !"".equals(ColorsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByColor(ColorsSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
 				
 				else if (BrakessSearch != null && !"".equals(BrakessSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrakes(BrakessSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
 				
 				else if (WheelsSearch != null && !"".equals(WheelsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByWheels(WheelsSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
 				
-//				else if (ElecSearch != null && !"".equals(ElecSearch)) {
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesByElec(ElecSearch);
-//					ctx.json(bikesFound);
-//				}
-//				
-//				else if (FrameSizesSearch != null && !"".equals(FrameSizesSearch)) {
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesByFrame(FrameSizesSearch);
-//					ctx.json(bikesFound);
-//				}
-//				
-//				else if (SpeedsSearch != null && !"".equals(SpeedsSearch)) {
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesBySpeeds(SpeedsSearch);
-//					ctx.json(bikesFound);
-//				}
-//				
-//				else if (PriceSearch != null && !"".equals(PriceSearch)) {
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesByPrice(PriceSearch);
-//					ctx.json(bikesFound);
-//				}
-//				
+				else if (ElecSearch != null && !"".equals(ElecSearch)) {
+					boolean ElectricSearch = Boolean.parseBoolean(ElecSearch);
+					Set<Bike> bikesFound = userServ.searchAvailablebikesByElec(ElectricSearch);
+					ctx.status(HttpStatus.ACCEPTED_202);
+					ctx.json(bikesFound);
+				}
+				
+				else if (FrameSizesSearch != null && !"".equals(FrameSizesSearch)) {
+					int FrameSize = Integer.parseInt(FrameSizesSearch);
+					Set<Bike> bikesFound = userServ.searchAvailablebikesByFrame(FrameSize);
+					ctx.status(HttpStatus.ACCEPTED_202);
+					ctx.json(bikesFound);
+				}
+				
+				else if (SpeedsSearch != null && !"".equals(SpeedsSearch)) {
+					int Speed = Integer.parseInt(SpeedsSearch);
+					Set<Bike> bikesFound = userServ.searchAvailablebikesBySpeeds(Speed);
+					ctx.status(HttpStatus.ACCEPTED_202);
+					ctx.json(bikesFound);
+				}
+				
+				else if (PriceSearch != null && !"".equals(PriceSearch)) {
+					double Price = Double.parseDouble(PriceSearch);
+					Set<Bike> bikesFound = userServ.searchAvailablebikesByPrice(Price);
+					ctx.status(HttpStatus.ACCEPTED_202);
+					ctx.json(bikesFound);
+				}
+				
 //				else if (PricesSearch != null && !"".equals(PricesSearch)) {
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesByPriceRange(PricesSearch);
+//					double Price = Double.parseDouble(PricesSearch);
+//					Set<Bike> bikesFound = userServ.searchAvailablebikesByPrice(Price);
+//					ctx.status(HttpStatus.ACCEPTED_202);
 //					ctx.json(bikesFound);
 //				}
 		
 				else {
 					Set<Bike> availableBikes = userServ.viewAvailableBikes();
+					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(availableBikes);
 				}
 			});

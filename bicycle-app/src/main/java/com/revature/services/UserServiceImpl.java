@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 	public Person buyBike(int bikeID, Person newOwner) {
 		Bike bikeToBuy = bikeDao.getById(bikeID);
 		if (bikeToBuy.isAvailable().equals("available")) {
-			bikeToBuy.setAvailable("Bought");
+			bikeToBuy.setAvailable("bought");
 			newOwner.getBikes().add(bikeToBuy);
 			
 			bikeDao.update(bikeToBuy);
