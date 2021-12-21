@@ -5,8 +5,6 @@ import io.javalin.http.HttpCode;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.jetty.http.HttpStatus;
@@ -15,7 +13,6 @@ import com.revature.services.EmployeeService;
 import com.revature.services.EmployeeServiceImpl;
 import com.revature.services.UserService;
 import com.revature.services.UserServiceImpl;
-import com.revature.beans.Person;
 import com.revature.beans.Bike;
 
 
@@ -41,7 +38,10 @@ public class BikeApp {
 					String FrameSizesSearch = ctx.queryParam("frameSize");
 					String SpeedsSearch = ctx.queryParam("speeds");
 					String PriceSearch = ctx.queryParam("price");
-					List<String> PricesSearch = ctx.queryParams("price"+"price1");
+				
+					
+						
+					
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);
@@ -101,21 +101,6 @@ public class BikeApp {
 					ctx.json(bikesFound);
 				}
 				
-				else if (PricesSearch != null) {
-					try {
-					String price = PricesSearch.get(0); 
-					String price1 = PricesSearch.get(1); 
-					double Price = Double.parseDouble(price);
-					double Price1 = Double.parseDouble(price1);
-					Set<Bike> bikesFound = userServ.searchAvailablebikesByPriceRange(Price, Price1);
-					ctx.status(HttpStatus.ACCEPTED_202);
-					ctx.json(bikesFound);
-				} catch (IndexOutOfBoundsException e) {
-					ctx.status(HttpStatus.BAD_REQUEST_400);
-					ctx.json("Must insert 2 values");
-					}
-				}
-		
 				else {
 					Set<Bike> availableBikes = userServ.viewAvailableBikes();
 					ctx.status(HttpStatus.ACCEPTED_202);
