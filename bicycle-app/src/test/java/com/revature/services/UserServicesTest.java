@@ -366,6 +366,7 @@ public class UserServicesTest {
 		
 		Bike mockBike = new Bike();
 		mockBike.setId(1);
+		mockBike.setAvailable("available");
 		when(BikeDao.getById(bikeID)).thenReturn(mockBike);
 		
 		doNothing().when(BikeDao).update(Mockito.any(Bike.class));
