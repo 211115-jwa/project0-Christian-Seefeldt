@@ -45,61 +45,106 @@ public class BikeApp {
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (ModelsSearch != null && !"".equals(ModelsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByModel(ModelsSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (ColorsSearch != null && !"".equals(ColorsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByColor(ColorsSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (BrakessSearch != null && !"".equals(BrakessSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrakes(BrakessSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (WheelsSearch != null && !"".equals(WheelsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByWheels(WheelsSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (ElecSearch != null && !"".equals(ElecSearch)) {
 					boolean ElectricSearch = Boolean.parseBoolean(ElecSearch);
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByElec(ElectricSearch);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (FrameSizesSearch != null && !"".equals(FrameSizesSearch)) {
 					int FrameSize = Integer.parseInt(FrameSizesSearch);
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByFrame(FrameSize);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (SpeedsSearch != null && !"".equals(SpeedsSearch)) {
 					int Speed = Integer.parseInt(SpeedsSearch);
 					Set<Bike> bikesFound = userServ.searchAvailablebikesBySpeeds(Speed);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else if (PriceSearch != null && !"".equals(PriceSearch)) {
 					double Price = Double.parseDouble(PriceSearch);
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByPrice(Price);
+					if (bikesFound.isEmpty()) {
+						ctx.status(HttpStatus.NOT_FOUND_404);
+						ctx.result("Bike Not Found");
+					} else {
 					ctx.status(HttpStatus.ACCEPTED_202);
 					ctx.json(bikesFound);
 				}
+			}
 				
 				else {
 					Set<Bike> availableBikes = userServ.viewAvailableBikes();
