@@ -19,7 +19,7 @@ create table Bike (
 	color varchar(100) not null,
 	brakes varchar(100) not null,
 	wheels varchar(100) not null,
-	avalible varchar(100) not null,
+	available varchar(100) not null,
 	electric bool not null,
 	frameSize integer not null,
 	speeds integer not null,
