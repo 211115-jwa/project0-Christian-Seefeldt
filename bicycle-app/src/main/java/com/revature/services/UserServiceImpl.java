@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 			bikeDao.update(bikeToBuy);
 			personDao.update(newOwner);
 			return newOwner;
-		}
+		} 
 		return null;
 	}
 

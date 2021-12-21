@@ -28,7 +28,7 @@ public class BikeDAOTest {
 	}
 	@Test
 	public void getByAvalible() {
-		Set<Bike> givenOutput = bikeDao.getByAvailable("Available");
+		Set<Bike> givenOutput = bikeDao.getByAvailable("available");
 		assertNotNull(givenOutput);
 		Set<Bike> expectedBikes = new HashSet<>();
 		assertNotEquals(expectedBikes, givenOutput);
@@ -163,13 +163,6 @@ public class BikeDAOTest {
 		Set<Bike> givenOutput = bikeDao.getByPriceRange(987654321, 987654321);
 		Set<Bike> expectedBikes = new HashSet<>();
 		assertEquals(expectedBikes, givenOutput);
-	}
-	@Test
-	public void getByPricesWhenOnlyOnePriceEntered() {
-		Set<Bike> givenOutput = bikeDao.getByPriceRange(280, 280);
-		assertNotNull(givenOutput);
-		Set<Bike> expectedBikes = new HashSet<>();
-		assertNotEquals(expectedBikes, givenOutput);
 	}
 	@Test
 	public void getByPricesWhenPriceEnteredBackwards() {

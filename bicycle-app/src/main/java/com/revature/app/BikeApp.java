@@ -5,6 +5,8 @@ import io.javalin.http.HttpCode;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.jetty.http.HttpStatus;
@@ -39,7 +41,7 @@ public class BikeApp {
 					String FrameSizesSearch = ctx.queryParam("frameSize");
 					String SpeedsSearch = ctx.queryParam("speeds");
 					String PriceSearch = ctx.queryParam("price");
-//					String PricesSearch = ctx.queryParam("price", "price");
+					List<String> PricesSearch = ctx.queryParams("price"+"price1");
 				
 				if (brandsSearch != null && !"".equals(brandsSearch)) {
 					Set<Bike> bikesFound = userServ.searchAvailablebikesByBrand(brandsSearch);
@@ -99,12 +101,20 @@ public class BikeApp {
 					ctx.json(bikesFound);
 				}
 				
-//				else if (PricesSearch != null && !"".equals(PricesSearch)) {
-//					double Price = Double.parseDouble(PricesSearch);
-//					Set<Bike> bikesFound = userServ.searchAvailablebikesByPrice(Price);
-//					ctx.status(HttpStatus.ACCEPTED_202);
-//					ctx.json(bikesFound);
-//				}
+				else if (PricesSearch != null) {
+					try {
+					String price = PricesSearch.get(0); 
+					String price1 = PricesSearch.get(1); 
+					double Price = Double.parseDouble(price);
+					double Price1 = Double.parseDouble(price1);
+					Set<Bike> bikesFound = userServ.searchAvailablebikesByPriceRange(Price, Price1);
+					ctx.status(HttpStatus.ACCEPTED_202);
+					ctx.json(bikesFound);
+				} catch (IndexOutOfBoundsException e) {
+					ctx.status(HttpStatus.BAD_REQUEST_400);
+					ctx.json("Must insert 2 values");
+					}
+				}
 		
 				else {
 					Set<Bike> availableBikes = userServ.viewAvailableBikes();
@@ -131,9 +141,9 @@ public class BikeApp {
 							if (bike != null)
 								ctx.json(bike);
 							else
-								ctx.status(404);
+								ctx.status(HttpStatus.NOT_FOUND_404);
 						} catch (NumberFormatException e) {
-							ctx.status(400);
+							ctx.status(HttpStatus.BAD_REQUEST_400);
 							ctx.result("Bike ID must be a numeric value");
 						}
 					});
@@ -147,13 +157,13 @@ public class BikeApp {
 								if (bikeToEdit != null)
 									ctx.json(bikeToEdit);
 								else
-									ctx.status(404);
+									ctx.status(HttpStatus.NOT_FOUND_404);
 							} else {
 								
 								ctx.status(HttpCode.CONFLICT);
 							}
 						} catch (NumberFormatException e) {
-							ctx.status(400);
+							ctx.status(HttpStatus.BAD_REQUEST_400);
 							ctx.result("Bike ID must be a numeric value");
 						}
 

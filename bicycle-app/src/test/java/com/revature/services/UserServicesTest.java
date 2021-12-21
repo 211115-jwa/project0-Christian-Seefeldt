@@ -371,7 +371,7 @@ public class UserServicesTest {
 		doNothing().when(BikeDao).update(Mockito.any(Bike.class));
 		doNothing().when(personDao).update(Mockito.any(Person.class));
 		
-		Person newPerson = userServ.buyBike(bikeID, person);
+		Person newPerson = userServ.buyBike(bikeID, person) ;
 
 		mockBike.setAvailable("bought");
 		assertTrue(newPerson.getBikes().contains(mockBike));

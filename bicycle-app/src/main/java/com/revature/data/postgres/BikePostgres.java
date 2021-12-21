@@ -590,7 +590,9 @@ public class BikePostgres implements BikeDAO {
 			try (Connection conn = connUtil.getConnection()) {
 				String sql = "select * from bike where price>? intersect select * from bike where price<?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-		
+				pStmt.setDouble(1, price);
+				pStmt.setDouble(2, price1);
+				
 				ResultSet resultSet = pStmt.executeQuery();
 
 				
